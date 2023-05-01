@@ -1,0 +1,79 @@
+// Birden fazla özelliği değişken yaparken "@mixin" veya "&" kullabiliyoruz. 
+/* 
+
+@mixin değişken_adı{
+    kodlar
+}
+uygularken --> @include değişken_adı
+
+
+%değişken_adı{
+    kodlar
+}
+uygularken --> @extend %değişken_adı
+
+*/
+
+@mixin price{ //-middle kısmının span bölümüne include et...
+    background-color: $theme-color;
+    font-weight: 600;
+    padding: 3px 6px;
+    border-radius: 30px;
+    background-color: orange;
+}
+
+%button{
+    background-color: $theme-color;
+    color: white;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 15px;
+}
+
+
+@mixin back{
+    position: relative;
+    .background{
+        width: 50%;
+        background-color: $theme-color;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        box-shadow: 5px 12px 15px black;
+    };
+}
+
+
+@mixin icon{
+        background-color: white;
+        color: black;
+        padding: 4px;
+        border-radius: 15px 15px 0 15px;
+
+        @include hover
+}
+
+@mixin hover{
+    transform: scaleX();
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: ease-in 0.3s;
+    }
+}
+
+@mixin logo{
+    p{
+        font-size: 32px;
+        span:nth-child(1){
+            font-family: $normal-font;
+            color: $theme-color;
+        } 
+        span:nth-child(2){
+            font-family: $normal-font;
+            color: orange;
+        }                
+    }
+}
